@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 24px;
 }
 
 body {
@@ -24,6 +25,14 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+#top,
+#work,
+#about,
+#services,
+#skills {
+  scroll-margin-top: 24px;
 }
 
 img {
@@ -657,6 +666,18 @@ footer p {
   justify-self: center;
   color: #85877e;
   font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .social-links {
