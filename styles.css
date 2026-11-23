@@ -35,6 +35,54 @@ a {
   scroll-margin-top: 24px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: scroll-reveal 700ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 32%;
+}
+
+.project,
+.services-list article,
+.skills-card,
+.hobbies-card {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: scroll-reveal 650ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 38%;
+}
+
+.project:nth-child(2),
+.services-list article:nth-child(2),
+.hobbies-card {
+  animation-delay: 120ms;
+}
+
+.services-list article:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+@keyframes scroll-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal,
+  .project,
+  .services-list article,
+  .skills-card,
+  .hobbies-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 img {
   display: block;
   width: 100%;
