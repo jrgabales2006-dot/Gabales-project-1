@@ -4,10 +4,63 @@
   --cream: #ebe7dc;
   --lime: #cbdc3f;
   --line: rgba(23, 24, 21, 0.14);
+  --muted: #61635c;
+  --page-background: #deddd5;
+  --focus: #557000;
+}
+
+body:has(#theme-toggle:checked) {
+  --ink: #f0f0e8;
+  --paper: #1b1d1a;
+  --cream: #242720;
+  --line: rgba(240, 240, 232, 0.16);
+  --muted: #b7baaf;
+  --page-background: #11120f;
+  --focus: #e2ee77;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  padding: 12px 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 4px;
+  transform: translateY(-150%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.theme-checkbox:focus-visible ~ .theme-toggle {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 html {
@@ -18,7 +71,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: #deddd5;
+  background: var(--page-background);
   font-family: "DM Sans", sans-serif;
 }
 
@@ -109,10 +162,51 @@ footer {
 
 .nav-wrap {
   position: relative;
+  grid-template-columns: 1fr auto auto auto;
 }
 
 .mobile-menu {
   display: none;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+  padding: 8px 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.theme-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: #8c8e83;
+  border-radius: 999px;
+  transition: background 180ms ease;
+}
+
+.theme-switch::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  content: "";
+  transition: transform 180ms ease;
+}
+
+.theme-checkbox:checked ~ .theme-toggle .theme-switch {
+  background: #718000;
+}
+
+.theme-checkbox:checked ~ .theme-toggle .theme-switch::after {
+  transform: translateX(16px);
 }
 
 .brand {
@@ -229,7 +323,7 @@ h1 em,
 .hero-intro {
   max-width: 520px;
   margin: 28px 0 32px;
-  color: #61635c;
+  color: var(--muted);
   font-size: 17px;
   line-height: 1.75;
 }
@@ -322,7 +416,8 @@ h1 em,
 .badge {
   position: absolute;
   z-index: 3;
-  background: rgba(244, 241, 233, 0.96);
+  color: var(--ink);
+  background: var(--paper);
   box-shadow: 0 12px 32px rgba(42, 42, 34, 0.12);
   backdrop-filter: blur(8px);
 }
@@ -364,7 +459,7 @@ h1 em,
 }
 
 .badge-bottom span {
-  color: #686960;
+  color: var(--muted);
   font-size: 10px;
   line-height: 1.25;
 }
@@ -395,7 +490,7 @@ h1 em,
 
 .stat > span {
   margin-top: 8px;
-  color: #77796f;
+  color: var(--muted);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -520,7 +615,7 @@ h1 em,
 .project-meta p,
 .project-meta > span {
   margin: 7px 0 0;
-  color: #77796f;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -548,7 +643,7 @@ h1 em,
 
 .about-columns p {
   margin: 0;
-  color: #62645c;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.8;
 }
@@ -580,7 +675,7 @@ h1 em,
 .services-list article > span {
   display: block;
   margin-bottom: 50px;
-  color: #8b8d82;
+  color: var(--muted);
   font-size: 11px;
 }
 
@@ -593,7 +688,7 @@ h1 em,
 .services-list p {
   max-width: 260px;
   margin: 0;
-  color: #73766d;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -712,7 +807,7 @@ footer {
 
 footer p {
   justify-self: center;
-  color: #85877e;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -779,7 +874,7 @@ footer p {
 
 @media (max-width: 760px) {
   .nav-wrap {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     min-height: 72px;
   }
 
@@ -814,18 +909,18 @@ footer p {
     display: none;
   }
 
-  .mobile-menu summary span {
+  .mobile-menu summary .menu-bar {
     width: 16px;
     height: 1.5px;
     background: var(--ink);
     transition: transform 180ms ease;
   }
 
-  .mobile-menu[open] summary span:first-child {
+  .mobile-menu[open] summary .menu-bar:nth-of-type(2) {
     transform: translateY(3.75px) rotate(45deg);
   }
 
-  .mobile-menu[open] summary span:last-child {
+  .mobile-menu[open] summary .menu-bar:nth-of-type(3) {
     transform: translateY(-3.75px) rotate(-45deg);
   }
 

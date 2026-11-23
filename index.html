@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="page-shell">
-    <header class="nav-wrap">
-      <a class="brand" href="#top" aria-label="Back to top">
+    <header class="nav-wrap" id="top">
+      <input class="sr-only theme-checkbox" type="checkbox" id="theme-toggle">
+      <a class="brand" href="#top" aria-label="Jr Gabales, back to top">
         <span class="brand-mark">A</span>
         <span>Jr Gabales</span>
       </a>
@@ -23,12 +25,18 @@
         <a href="#services">Services</a>
         <a href="#skills">Skills</a>
       </nav>
+      <label class="theme-toggle" for="theme-toggle">
+        <span class="sr-only">Toggle dark theme</span>
+        <span class="theme-switch" aria-hidden="true"></span>
+        <span class="theme-label-text" aria-hidden="true">Dark</span>
+      </label>
       <details class="mobile-menu">
-        <summary aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
+        <summary aria-label="Toggle navigation" aria-controls="mobile-navigation">
+          <span class="sr-only">Open menu</span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
         </summary>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
+        <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#services">Services</a>
@@ -42,7 +50,7 @@
       </a>
     </header>
 
-    <main id="top">
+    <main id="main-content">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> Available for freelance</p>
@@ -202,9 +210,9 @@
         </div>
       </section>
 
-      <section class="contact-section reveal">
+      <section class="contact-section reveal" id="contact" aria-labelledby="contact-heading">
         <p class="eyebrow"><span></span> Start a project</p>
-        <h2>Have a good idea?<br><em>Let's make it real.</em></h2>
+        <h2 id="contact-heading">Have a good idea?<br><em>Let's make it real.</em></h2>
         <div class="contact-details">
           <a href="mailto:jrgabales@email.com">jrgabales@email.com</a>
           <a href="tel:+639123456789">0912 345 6789</a>
@@ -214,7 +222,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer aria-label="Footer">
       <a class="brand" href="#top">
         <span class="brand-mark">A</span>
         <span>Jr Gabales</span>
