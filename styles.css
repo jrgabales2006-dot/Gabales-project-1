@@ -50,6 +50,14 @@ footer {
   border-bottom: 1px solid var(--line);
 }
 
+.nav-wrap {
+  position: relative;
+}
+
+.mobile-menu {
+  display: none;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -708,6 +716,73 @@ footer p {
 
   .nav-links {
     display: none;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    justify-self: end;
+  }
+
+  .mobile-menu summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu summary span {
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 180ms ease;
+  }
+
+  .mobile-menu[open] summary span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+
+  .mobile-menu[open] summary span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    z-index: 20;
+    display: grid;
+    width: 210px;
+    padding: 10px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 14px 36px rgba(23, 24, 21, 0.12);
+  }
+
+  .mobile-nav a {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: 0;
   }
 
   .hero {
