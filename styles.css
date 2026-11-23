@@ -533,6 +533,56 @@ h1 em,
   line-height: 1.6;
 }
 
+.interests-section {
+  padding: 110px 58px 120px;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.skills-card,
+.hobbies-card {
+  min-height: 330px;
+  padding: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+}
+
+.hobbies-card {
+  background: var(--lime);
+}
+
+.skills-card h3,
+.hobbies-card h3 {
+  margin-bottom: 28px;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.skills-card ul,
+.hobbies-card ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills-card li,
+.hobbies-card li {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .contact-section {
   display: flex;
   flex-direction: column;
@@ -769,6 +819,20 @@ footer p {
 
   .services-list article > span {
     margin-bottom: 28px;
+  }
+
+  .interests-section {
+    padding: 72px 24px;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-card,
+  .hobbies-card {
+    min-height: 280px;
+    padding: 28px 24px;
   }
 
   .contact-section {
