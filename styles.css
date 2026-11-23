@@ -611,6 +611,24 @@ h1 em,
   -webkit-text-stroke-color: var(--ink);
 }
 
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+  margin: -12px 0 28px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.contact-details a {
+  border-bottom: 1px solid transparent;
+}
+
+.contact-details a:hover {
+  border-bottom-color: var(--ink);
+}
+
 .contact-section .primary-button {
   min-width: 260px;
   color: var(--ink);
